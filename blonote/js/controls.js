@@ -127,7 +127,7 @@ function myInit() {
     shufflePls(playlist);
     shufflePls(notes);
     newNote();
-    nextTrack();
+    readyAudio();
     console.log(playlist);
     console.log(notes);
 }
@@ -135,6 +135,7 @@ function myInit() {
 // .getPlayerState() not working with nextTrack()
 var audioOn = false;
 function startAndStop() {
+    console.log("Audio is: "+audioOn);
     if (audioOn) {
         player.pauseVideo();
         audioOn = false;
@@ -142,6 +143,12 @@ function startAndStop() {
         player.playVideo();
         audioOn = true;
     }
+}
+
+function readyAudio() {
+    nextTrack();
+    player.pauseVideo(); // Prevent autoplay
+    audioOn = false;
 }
 
 function nextTrack() {
