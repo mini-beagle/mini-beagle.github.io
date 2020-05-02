@@ -1,0 +1,184 @@
+// Load the IFrame Player API code asynchronously
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// Create an <iframe> (and YouTube player) after the API code downloads
+var player;
+var player2;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('audio', {
+        // height: '0',
+        // width: '0',
+        // videoId: 'eQcZ9AjrSuQ',
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+
+    player2 = new YT.Player('rain', {
+        // events: {
+        //     'onReady': onPlayerReady,
+        //     'onStateChange': onPlayerStateChange
+        // }
+    });
+}
+
+// The API will call this function when the video player is ready
+function onPlayerReady(event) {
+    console.log("Player ready");
+    console.log(player.getPlayerState());
+    console.log(event.data);
+    console.log(event.target);
+    event.target.playVideo();
+}
+
+// The API calls this function when the player's state changes.
+function onPlayerStateChange(event) {
+    console.log("Player state has changed!");
+    if (event.data == 3) {
+        console.log(event.data);
+    }
+    if (event.data == 0) {
+        console.log(event.data);
+        console.log("Starting next song in playlist...");
+        nextTrack();
+    }
+}
+
+/* MY FUNCTIONS */
+
+// Shuffle... Maybe...
+
+function shufflePls(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i+1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
+// Audio Controls
+
+/*
+    LOVEDRUNK (Piano Version)
+    LULLABY FOR A CAT (Unedited)
+    LOVE STORY
+    HAPPEN ENDING
+    1825 (PAPER CRANES)
+    HOME IS FAR AWAY (Piano Cover)
+*/
+var playlist = [
+        "jS7TPAO0c7g",
+        "Sb9Xu17T4CU",
+        "dY2AUNCNNpA",
+        "zSQrkrM9ynA",
+        "pHzKU2pyluo",
+        "ixN3IzhQJFI",
+        "eQcZ9AjrSuQ"];
+
+var notes =
+    ["Sometimes the unimaginable occurs in order to fatten our imagination.",
+    "Something that is unexplainable is either a miracle or you're just not that good at explaining.",
+    "I reminisce, not to dwell in the past, but to practice for a future worth remembering.",
+    "My heart goes through four seasons in a single day.",
+    "I don't mind being strange but I mind being a stranger.",
+    "The things we've let go of find it very hard to let go of us.",
+    "People in your way are probably just as lost as you.",
+    "I'm not lazy. I'm just busy being lazy.",
+    "Sometimes regret is just a sign of a healthy imagination.",
+    "If you must cry, at least don't do it alone.",
+    "Life is short and a season is shorter. Relish the heat; relish the cold.",
+    "I'm not an outsider. I'm just not near you.",
+    "My place in this world is far from somewhere I can call \"my place.\"",
+    "There's a parking lot in my heart and too many people have left without their cars.",
+    "Before you decide that I'm nothing you expected, could you try to expect nothing but me?",
+    "I must have a designated rain cloud.",
+    "At times, maybe is all that you may be.",
+    "The truth doesn't require acknowledgement to be exactly what it is.",
+    "I pray that no one dies young, no more sad goodbyes.",
+    "If you envy the gifted, try opening the gift in your hands.",
+    "They say there's a time and place for everything, but I have neither a watch nor a map.",
+    "Two halves only make a hole."];
+
+function myInit() {
+    shufflePls(playlist);
+    shufflePls(notes);
+    newNote();
+    nextTrack();
+    console.log(playlist);
+    console.log(notes);
+}
+
+var audioOn = false;
+function startAndStop() {
+    if (audioOn) {
+        player.pauseVideo();
+        audioOn = false;
+    } else {
+        player.playVideo();
+        audioOn = true;
+    }
+}
+
+function nextTrack() {
+    var next = pickNext();
+    var audio = document.getElementById("audio");
+    audio.setAttribute("src","https://www.youtube.com/embed/"+next+"?&autoplay=0&loop=0&enablejsapi=true&widgetid=1");
+    console.log("Changing music...");
+}
+
+var songNum = -1;
+function pickNext() {
+    if (songNum >= playlist.length-1) {
+        songNum = 0;
+        shufflePls(playlist);
+    } else {
+        songNum += 1;
+    }
+    console.log(playlist[songNum]);
+    return playlist[songNum];
+}
+
+var itsRaining = false;
+function addRain() {
+    if (itsRaining) {
+        player2.pauseVideo();
+        itsRaining = false;
+    } else {
+        player2.playVideo();
+        itsRaining = true;
+        console.log("Adding rain...");
+    }
+}
+
+// Text Controls
+
+// var count = notes.length;
+// var lastNote = Math.floor(Math.random()*count);
+
+var noteNum = 0;
+function newNote() {
+    // var nextNote = lastNote;
+    // while(nextNote === lastNote) {
+    //     nextNote = Math.floor(Math.random()*count);
+    // }
+    // lastNote = nextNote;
+    // console.log(lastNote, nextNote);
+
+    if (noteNum >= notes.length-1) {
+        shufflePls(notes);
+        noteNum = 0;
+    }
+
+    var text = document.getElementById("note");
+    text.innerHTML= notes[noteNum];
+    noteNum++;
+
+    return;
+}

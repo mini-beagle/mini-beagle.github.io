@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+#text {
+    width: 70%;
+}
+
+#note {
+    display: block;
+    font-family: 'Nanum Pen Script', Arial, sans-serif;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.uk-button-default {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: rgba(38, 181, 85, 0.65);
+    padding: 1em;
+    margin-top: 3%;
+}
+
+.uk-button-default:hover {
+    color: #26B555;
+    background-color: #000;
+    opacity: 65%;
+    padding: 1em;
+}
+
+.uk-button-default:active {
+    color: #000;
+    background-color: rgba(38, 181, 85, 0.65);
+    padding: 1em;
+}
+
+.uk-button-default:focus {
+    color: red;
+    background-color: #000;
+    opacity: 65%;
+    padding: 1em;
+}
+
+#controls {
+    margin-top: 5%;
+}
+
+#bg {
+    position: absolute;
+    z-index: -99;
+}
+
+@media (min-width:600px) {
+    #note {
+        color: #FFF;
+        font-size: 26px;
+        padding: 1em;
+        margin-bottom: 5em;
+    }
+}
+
+@media (min-width:1100px) {
+    #note {
+        color: #FFF;
+        height: 3em;
+        font-size: 36px;
+        padding: 1em;
+        margin-bottom: 5em;
+    }
+}
+
+@media (min-width:1600px) {
+    #note {
+        color: #FFF;
+        height: 2.5em;
+        font-size: 44px;
+        padding: 1.3em;
+        margin-bottom: 5em;
+    }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BLONOTE</title>
+    <script type="text/javascript" src="uikit.min.js"></script>
+    <script type="text/javascript" src="js/controls.js"></script>
+    <link rel="stylesheet" href="css/uikit.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+</head>
+</head>
+<body onload="myInit()">
+    <div class="uk-position-center" id="text">
+        <p id="note" onclick="newNote()">LOADING...</p>
+        <div class="uk-position-center" id="controls">
+            <button class="uk-button-default" onclick="startAndStop()">Play/Pause Music</button>
+            <button class="uk-button-default" onclick="nextTrack()">Change Music</button>
+            <button class="uk-button-default" onclick="addRain()">Rainy Day</button>
+        </div>
+
+    </div>
+
+    <!-- Music -->
+    <iframe id="audio" width="0" height="0" src="https://www.youtube.com/embed/HzE45YJQOLY?autoplay=0&loop=1&enablejsapi=true&widgetid=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <!-- Rain -->
+    <iframe id="rain" width="0" height="0" src="https://www.youtube.com/embed/euWoxhUkf_w?autoplay=0&loop=1&enablejsapi=true&widgetid=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <iframe id="bg" width="99%" height="100%" src="https://www.youtube.com/embed/dx3GxpitvbY?autoplay=1&loop=1&controls=0&enablejsapi=true&widgetid=1&mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</body>
+</html>
