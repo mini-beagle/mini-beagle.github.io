@@ -2,6 +2,10 @@
     font-family: 'Nanum Pen Script', cursive;
 }
 
+body {
+    overflow: hidden;
+}
+
 #text {
     width: 70%;
 }
@@ -12,6 +16,7 @@
     text-align: center;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 5em;
 }
 
 .uk-button-default {
@@ -50,14 +55,35 @@
 #bg {
     position: absolute;
     z-index: -99;
+    padding: 0px;
+    margin: 0px;
+}
+
+iframe {
+    display: block; /* Eliminate white space on left side :) */
 }
 
 @media (min-width:600px) {
     #note {
-        color: #FFF;
-        font-size: 26px;
+        font-size: 22px;
+        height: 3em;
         padding: 1em;
-        margin-bottom: 5em;
+    }
+}
+
+@media (min-width:700px) {
+    #note {
+        font-size: 30px;
+        height: 3em;
+        padding: 1.2em;
+    }
+}
+
+@media (min-width:800px) {
+    #note {
+        font-size: 34px;
+        height: 3em;
+        padding: 1.2em;
     }
 }
 
@@ -66,16 +92,15 @@
         color: #FFF;
         height: 3em;
         font-size: 36px;
-        padding: 1em;
-        margin-bottom: 5em;
+        padding: 1.2em;
     }
 }
 
 @media (min-width:1600px) {
     #note {
-        color: #FFF;
         height: 2.5em;
         font-size: 44px;
         padding: 1.3em;
         margin-bottom: 5em;
     }
+}

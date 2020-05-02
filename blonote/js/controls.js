@@ -5,8 +5,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // Create an <iframe> (and YouTube player) after the API code downloads
-var player;
-var player2;
+var player, player2;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('audio', {
         // height: '0',
@@ -37,6 +36,9 @@ function onPlayerReady(event) {
 
 // The API calls this function when the player's state changes.
 function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        console.log("now playing...");
+    }
     console.log("Player state has changed!");
     if (event.data == 3) {
         console.log(event.data);
@@ -72,15 +74,25 @@ function shufflePls(a) {
     HAPPEN ENDING
     1825 (PAPER CRANES)
     HOME IS FAR AWAY (Piano Cover)
+    HARAJUKU DAYS
+    HOME - cCuJyEwTozU
+    FOREST
+    SLEEPLESS (Piano Cover)
+    OCEAN. SAND. TREES *
+    EMOLOGUE *
 */
 var playlist = [
-        "jS7TPAO0c7g",
+        "HzE45YJQOLY",
         "Sb9Xu17T4CU",
         "dY2AUNCNNpA",
         "zSQrkrM9ynA",
         "pHzKU2pyluo",
         "ixN3IzhQJFI",
-        "eQcZ9AjrSuQ"];
+        "eQcZ9AjrSuQ",
+        "RyKL3kIJYD0",
+        "mEYsvWaLZGo",
+        "4i8rPsG3YZ8",
+        "NkDgP4jbAno"];
 
 var notes =
     ["Sometimes the unimaginable occurs in order to fatten our imagination.",
@@ -104,7 +116,12 @@ var notes =
     "I pray that no one dies young, no more sad goodbyes.",
     "If you envy the gifted, try opening the gift in your hands.",
     "They say there's a time and place for everything, but I have neither a watch nor a map.",
-    "Two halves only make a hole."];
+    "Two halves only make a hole.",
+    "The temperature of the heart has nothing to do with the weather.",
+    "My day to day, as a playlist, would be one long song on repeat.",
+    "Passion is the narrowing of the gap between who I wish to be and who I will be.",
+    "Spring. The way my year is jumping off, it appears to be broken.",
+    "We need a new emotion that is apathy and sympathy at the same time."];
 
 function myInit() {
     shufflePls(playlist);
@@ -115,6 +132,7 @@ function myInit() {
     console.log(notes);
 }
 
+// .getPlayerState() not working with nextTrack()
 var audioOn = false;
 function startAndStop() {
     if (audioOn) {
@@ -128,9 +146,11 @@ function startAndStop() {
 
 function nextTrack() {
     var next = pickNext();
-    var audio = document.getElementById("audio");
-    audio.setAttribute("src","https://www.youtube.com/embed/"+next+"?&autoplay=0&loop=0&enablejsapi=true&widgetid=1");
-    console.log("Changing music...");
+    player.loadVideoById(next);
+    audioOn = true;
+    // var audio = document.getElementById("audio");
+    // audio.setAttribute("src","https://www.youtube.com/embed/"+next+"?&autoplay=0&loop=0&enablejsapi=true&widgetid=1");
+    // console.log("Changing music...");
 }
 
 var songNum = -1;
