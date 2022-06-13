@@ -78,8 +78,9 @@ function shufflePls(a) {
     HOME - cCuJyEwTozU
     FOREST
     SLEEPLESS (Piano Cover)
-    OCEAN. SAND. TREES *
-    EMOLOGUE *
+    OCEAN. SAND. TREES *Removed
+    EMOLOGUE *Removed
+    CAN YOU HEAR MY HEART (Piano)
 */
 var playlist = [
         "HzE45YJQOLY",
@@ -91,8 +92,7 @@ var playlist = [
         "eQcZ9AjrSuQ",
         "RyKL3kIJYD0",
         "mEYsvWaLZGo",
-        "4i8rPsG3YZ8",
-        "NkDgP4jbAno"];
+        "x0kcM-7_s9w"];
 
 var notes =
     ["Sometimes the unimaginable occurs in order to fatten our imagination.",
@@ -204,7 +204,7 @@ function newNote() {
     }
 
     var text = document.getElementById("note");
-    text.innerHTML= notes[noteNum];
+    text.innerHTML = notes[noteNum] + " " + "<span id=\"arrow\">&#9660</span>";
     noteNum++;
 
     return;
