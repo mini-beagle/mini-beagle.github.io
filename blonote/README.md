@@ -28,4 +28,3 @@ All of the songs are Epik High originals, but some may be covers by other indivi
 - [Forest](https://www.youtube.com/watch?v=RyKL3kIJYD0)
 - [Sleepless (Piano Cover by Taeri)](https://www.youtube.com/watch?v=mEYsvWaLZGo)
 - [Can You Hear My Heart (Piano Cover by Funguypiano)](https://www.youtube.com/watch?v=x0kcM-7_s9w)
-- 
