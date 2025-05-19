@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap");
+
+:root > * {
+    --md-primary-fg-color: #009e94;
+    --md-default-fg-color--light: #009e94;
+}
+
+h1, h2 {
+    font-family: "Orbitron";
+    color: #009e94;
+}
+
+.md-header {
+    box-shadow: none;
+}
